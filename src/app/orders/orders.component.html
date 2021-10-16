@@ -1,0 +1,34 @@
+<form [formGroup]="formOrders">
+  <div class="form-group" *ngIf="formOrders.get('id').value">
+    <label for="idOrder">Id: {{formOrders.get('id').value}}</label>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFreight1">Freight order</label>
+    <input type="freight" class="form-control" id="exampleInputFreight" aria-describedby="freightHelp"
+      placeholder="Enter Freight order" formControlName="freight">
+    <small id="freightHelp" class="form-text text-muted">enter the value</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputDateOrder1">Order date value</label>
+    <input type="date order" class="form-control" id="exampleInputDateOrder1" placeholder="Enter Order Date" formControlName="orderDate">
+    <small id="dateHelp" class="form-text text-muted">enter the date aaaa-mm-dd</small>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="guardarOrder()">Submit</button>
+  <button type="cancelar" class="btn btn-primary" (click)="cancelarFormulario()">Cancelar</button>
+</form>
+<table>
+<thead>
+
+</thead>
+<tbody>
+   <tr *ngFor = "let order of listOrder">
+     <th scope="row">
+        {{order.id}}
+     </th>
+     <td>{{order.freight}}</td>
+     <td>{{order.dateOrder}}</td>
+     <td><button (click)="deleteOrder(order.id)">Borrar</button></td>
+     <td><button (click)="modificarOrder(order)">Modificar</button></td>
+   </tr> 
+</tbody>
+</table>
